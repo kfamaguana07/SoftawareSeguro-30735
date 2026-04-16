@@ -63,6 +63,8 @@ La API estará disponible en: `http://localhost:3000`
 | GET | `/api/hoteles/:id` | Obtener hotel por ID |
 | POST | `/api/hoteles` | Crear hotel |
 | PUT | `/api/hoteles/:id` | Actualizar hotel |
+| DELETE | `/api/hoteles/:id` | Eliminar hotel |
+
 
 ### Clientes
 | Método | Endpoint | Descripción |
@@ -71,6 +73,8 @@ La API estará disponible en: `http://localhost:3000`
 | GET | `/api/clientes/:id` | Obtener cliente por ID |
 | POST | `/api/clientes` | Crear cliente |
 | PUT | `/api/clientes/:id` | Actualizar cliente |
+| DELETE | `/api/clientes/:id` | Eliminar cliente |
+
 
 ### Reservas
 | Método | Endpoint | Descripción |
@@ -79,6 +83,8 @@ La API estará disponible en: `http://localhost:3000`
 | GET | `/api/reservas/:id` | Obtener reserva por ID |
 | POST | `/api/reservas` | Crear reserva |
 | PUT | `/api/reservas/:id` | Actualizar reserva |
+| DELETE | `/api/reservas/:id` | Eliminar reserva |
+
 
 ## Probar con Postman
 Importar `hotel_reservas_api.postman_collection.json` en Postman.
@@ -89,3 +95,4 @@ Importar `hotel_reservas_api.postman_collection.json` en Postman.
 - `400` - Solicitud inválida
 - `404` - Recurso no encontrado
 - `500` - Error del servidor
+- `503` - Base de Datos no disponible
