@@ -10,6 +10,11 @@ const app = express();
 
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Agrega esto en src/app.js para exponer el JSON
+app.get('/api-docs.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
+});
 
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/hoteles', hotelRoutes);
