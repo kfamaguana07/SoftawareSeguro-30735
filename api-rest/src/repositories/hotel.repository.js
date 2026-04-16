@@ -22,7 +22,7 @@ class HotelRepository {
 
     async update(id, hotelData) {
         const { nombre, direccion, estrellas, telefono } = hotelData;
-        const [result] = await pool.query(
+        const [result] = await db.query(
             'UPDATE hoteles SET nombre = ?, direccion = ?, estrellas = ?, telefono = ? WHERE id = ?',
             [nombre, direccion, estrellas || null, telefono || null, id]
         );
@@ -30,7 +30,7 @@ class HotelRepository {
     }
 
     async delete(id) {
-        const [result] = await pool.query('DELETE FROM hoteles WHERE id = ?', [id]);
+        const [result] = await db.query('DELETE FROM hoteles WHERE id = ?', [id]);
         return result.affectedRows > 0;
     }
 }

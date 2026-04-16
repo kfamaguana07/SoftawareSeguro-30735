@@ -24,7 +24,7 @@ class ReservaRepository {
 
     async create(reservaData) {
         const { fecha_entrada, fecha_salida, num_huespedes, hotel_id, cliente_id } = reservaData;
-        const [result] = await pool.query(
+        const [result] = await db.query(
             'INSERT INTO reservas (fecha_entrada, fecha_salida, num_huespedes, hotel_id, cliente_id) VALUES (?, ?, ?, ?, ?)',
             [fecha_entrada, fecha_salida, num_huespedes || 1, hotel_id, cliente_id]
         );
@@ -33,7 +33,7 @@ class ReservaRepository {
 
     async update(id, reservaData) {
         const { fecha_entrada, fecha_salida, num_huespedes, hotel_id, cliente_id } = reservaData;
-        const [result] = await pool.query(
+        const [result] = await db.query(
             'UPDATE reservas SET fecha_entrada = ?, fecha_salida = ?, num_huespedes = ?, hotel_id = ?, cliente_id = ? WHERE id = ?',
             [fecha_entrada, fecha_salida, num_huespedes || 1, hotel_id, cliente_id, id]
         );
@@ -41,7 +41,7 @@ class ReservaRepository {
     }
 
     async delete(id) {
-        const [result] = await pool.query('DELETE FROM reservas WHERE id = ?', [id]);
+        const [result] = await db.query('DELETE FROM reservas WHERE id = ?', [id]);
         return result.affectedRows > 0;
     }
 }

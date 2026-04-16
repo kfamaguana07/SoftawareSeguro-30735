@@ -41,6 +41,10 @@ class ApiResponse {
     static forbidden(message = 'Forbidden') {
         return this.error(message, 403);
     }
+
+    static serviceUnavailable(message = 'Servicio no disponible temporalmente') {
+        return this.error(message, 503);
+    }
 }
 
 module.exports = ApiResponse;

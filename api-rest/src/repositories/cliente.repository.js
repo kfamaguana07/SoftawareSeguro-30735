@@ -27,7 +27,7 @@ class ClienteRepository {
 
     async update(id, clienteData) {
         const { nombre, email, telefono } = clienteData;
-        const [result] = await pool.query(
+        const [result] = await db.query(
             'UPDATE clientes SET nombre = ?, email = ?, telefono = ? WHERE id = ?',
             [nombre, email, telefono || null, id]
         );
@@ -35,7 +35,7 @@ class ClienteRepository {
     }
 
     async delete(id) {
-        const [result] = await pool.query('DELETE FROM clientes WHERE id = ?', [id]);
+        const [result] = await db.query('DELETE FROM clientes WHERE id = ?', [id]);
         return result.affectedRows > 0;
     }
 }

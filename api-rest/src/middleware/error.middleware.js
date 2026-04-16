@@ -1,8 +1,23 @@
 const ApiResponse = require('../utils/ApiResponse');
 
-const errorMiddleware = (err, res) => {
+const errorMiddleware = (err, req, res, next) => {
     console.error('Error:', err.message);
-    console.error('Stack:', err.stack);
+    if (err.stack) console.error('Stack:', err.stack);
+
+    const dbConnectionErrors = [
+        'ECONNREFUSED',
+        'ER_ACCESS_DENIED_ERROR',
+        'PROTOCOL_CONNECTION_LOST',
+        'ETIMEDOUT',
+        'ENOTFOUND',
+        'ECONNRESET'
+    ];
+
+    if (dbConnectionErrors.includes(err.code) || err.syscall === 'connect') {
+        return res.status(503).json(
+            ApiResponse.serviceUnavailable('La base de datos no está disponible. Por favor, intente más tarde.')
+        );
+    }
 
     if (err.code === 'ER_DUP_ENTRY') {
         return res.status(409).json(
