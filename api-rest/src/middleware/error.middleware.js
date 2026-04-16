@@ -15,7 +15,7 @@ const errorMiddleware = (err, req, res, next) => {
 
     if (dbConnectionErrors.includes(err.code) || err.syscall === 'connect') {
         return res.status(503).json(
-            ApiResponse.serviceUnavailable('La base de datos no está disponible. Por favor, intente más tarde.')
+            ApiResponse.serviceUnavailable('La base de datos no está disponible', 503)
         );
     }
 
