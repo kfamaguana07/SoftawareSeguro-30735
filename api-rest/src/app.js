@@ -1,4 +1,6 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const clienteRoutes = require('./routes/cliente.routes');
 const hotelRoutes = require('./routes/hotel.routes');
 const reservaRoutes = require('./routes/reserva.routes');
@@ -7,6 +9,7 @@ const errorMiddleware = require('./middleware/error.middleware');
 const app = express();
 
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/hoteles', hotelRoutes);
@@ -30,7 +33,8 @@ app.get('/', (req, res) => {
             'GET /api/reservas/:id',
             'POST /api/reservas',
             'PUT /api/reservas/:id',
-            'DELETE /api/reservas/:id'
+            'DELETE /api/reservas/:id',
+            'Documentación Swagger: /api-docs'
         ]
     });
 });
