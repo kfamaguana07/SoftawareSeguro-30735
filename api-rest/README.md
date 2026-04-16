@@ -5,7 +5,7 @@ API REST para gestionar Hoteles, Clientes y Reservas de una cadena hotelera.
 
 ## Requisitos
 - Node.js v18+
-- MySQL 8.0+ (o Docker)
+- Docker
 
 ## Instalación
 
@@ -16,25 +16,27 @@ npm install
 
 ### 2. Configurar Base de Datos
 
-**Opción A: Docker Compose (Recomendado)**
+**Docker Compose**
 ```bash
 docker-compose up -d
 ```
 Esto inicia MySQL con la base de datos `hotel_reservas` y las tablas necesarias.
 
-**Opción B: MySQL local**
-Ejecutar el script SQL:
+### 3. Configurar variables de entorno
+
+1. Copia el archivo de ejemplo:
 ```bash
-mysql -u root -p < hotel_reservas.sql
+   cp .env.example .env
 ```
 
-### 3. Configurar variables de entorno (opcional)
-Editar `.env` si necesitas cambiar configuración:
+Editar el archivo `.env` y configurar los valores
+
 ```
+# Configuración de la base de datos
 PORT=3000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=
+DB_PASSWORD=espe123
 DB_NAME=hotel_reservas
 ```
 
