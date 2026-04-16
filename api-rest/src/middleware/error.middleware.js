@@ -1,6 +1,6 @@
 const ApiResponse = require('../utils/ApiResponse');
 
-const errorMiddleware = (err, req, res, next) => {
+const errorMiddleware = (err, res) => {
     console.error('Error:', err.message);
     console.error('Stack:', err.stack);
 

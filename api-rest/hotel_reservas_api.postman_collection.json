@@ -86,6 +86,21 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE - Eliminar hotel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hoteles/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "hoteles", "1"]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -169,6 +184,21 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE - Eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/clientes/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "clientes", "1"]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -243,6 +273,21 @@
 							"mode": "raw",
 							"raw": "{\n    \"fecha_entrada\": \"2025-06-01\",\n    \"fecha_salida\": \"2025-06-07\",\n    \"num_huespedes\": 3,\n    \"hotel_id\": 2,\n    \"cliente_id\": 2\n}"
 						},
+						"url": {
+							"raw": "http://localhost:3000/api/reservas/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "reservas", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Eliminar reserva",
+					"request": {
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "http://localhost:3000/api/reservas/1",
 							"protocol": "http",
